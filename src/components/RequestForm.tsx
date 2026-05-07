@@ -1,0 +1,142 @@
+import React, { useState } from 'react'
+
+function RequestForm() {
+
+  const [formData, setFormData] = useState({
+    patientName: '',
+    bloodType: '',
+    hospital: '',
+    location: '',
+    phone: '',
+    urgency: '',
+  })
+
+  const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
+  const urgencyLevels = ['🔴 Critical', '🟡 Urgent', '🟢 Scheduled']
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  function handleSubmit() {
+    if (!formData.patientName || !formData.bloodType || !formData.hospital || !formData.location || !formData.phone || !formData.urgency) {
+      alert('Please fill in all fields!')
+      return
+    }
+    alert(`🚨 Emergency request sent! Nearby ${formData.bloodType} donors are being notified now!`)
+  }
+
+  return (
+    <section className="request-section" id="request">
+
+      {/* Section heading */}
+      <div className="request-header">
+        <span className="request-tag">🚨 Emergency Request</span>
+        <h2 className="request-heading">
+          Need Blood <br />
+          <span className="request-heading-red">Right Now?</span>
+        </h2>
+        <p className="request-subtext">
+          Fill this form and we will instantly alert
+          every available donor near your location.
+        </p>
+      </div>
+
+      {/* Urgency level picker */}
+      <div className="request-card">
+
+        <div className="request-field">
+          <label className="request-label">How Urgent Is This?</label>
+          <div className="urgency-choices">
+            {urgencyLevels.map((level) => (
+              <button
+                key={level}
+                className={`urgency-btn ${formData.urgency === level ? 'urgency-btn-active' : ''}`}
+                onClick={() => setFormData({ ...formData, urgency: level })}
+              >
+                {level}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Patient name */}
+        <div className="request-field">
+          <label className="request-label">Patient Name</label>
+          <input
+            className="request-input"
+            type="text"
+            name="patientName"
+            placeholder="e.g. John Adeyemi"
+            value={formData.patientName}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Blood type */}
+        <div className="request-field">
+          <label className="request-label">🩸 Blood Type Needed</label>
+          <div className="blood-type-grid">
+            {bloodTypes.map((type) => (
+              <button
+                key={type}
+                className={`blood-type-btn ${formData.bloodType === type ? 'blood-type-btn-active' : ''}`}
+                onClick={() => setFormData({ ...formData, bloodType: type })}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Hospital */}
+        <div className="request-field">
+          <label className="request-label">🏥 Hospital Name</label>
+          <input
+            className="request-input"
+            type="text"
+            name="hospital"
+            placeholder="e.g. EKSUTH, Ado-Ekiti"
+            value={formData.hospital}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Location */}
+        <div className="request-field">
+          <label className="request-label">📍 Location</label>
+          <input
+            className="request-input"
+            type="text"
+            name="location"
+            placeholder="e.g. Ado-Ekiti, Ekiti"
+            value={formData.location}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Phone */}
+        <div className="request-field">
+          <label className="request-label">📞 Contact Phone</label>
+          <input
+            className="request-input"
+            type="tel"
+            name="phone"
+            placeholder="e.g. 08012345678"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Submit button */}
+        <button className="request-btn" onClick={handleSubmit}>
+          🚨 Send Emergency Request
+        </button>
+
+      </div>
+
+    </section>
+  )
+}
+
+export default RequestForm

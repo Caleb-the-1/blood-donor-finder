@@ -1,0 +1,154 @@
+/* SEARCH SECTION WRAPPER */
+.search-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background-color: var(--color-surface);
+  position: relative;
+}
+
+/* SECTION HEADER */
+.search-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.search-tag {
+  display: inline-block;
+  background-color: var(--color-red-dim);
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+}
+
+.search-heading {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.search-heading-red {
+  color: var(--color-red-bright);
+}
+
+.search-subtext {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* THE SEARCH CARD*/
+.search-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 580px;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.15);
+}
+
+/* EACH FIELD INSIDE THE CARD*/
+.search-field {
+  margin-bottom: 2rem;
+}
+
+.search-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+/* BLOOD TYPE BUTTONS GRID*/
+.blood-type-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+
+.blood-type-btn {
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.blood-type-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+
+.blood-type-btn-active {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: var(--color-text);
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+}
+
+/*LOCATION INPUT*/
+.search-input {
+  width: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Glows red when clicked on */
+.search-input:focus {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+}
+
+/* The placeholder text colour */
+.search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/*SEARCH BUTTON */
+.search-btn {
+  width: 100%;
+  background-color: var(--color-red);
+  color: var(--color-text);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-2px);
+}

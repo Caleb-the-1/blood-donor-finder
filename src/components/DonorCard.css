@@ -1,0 +1,125 @@
+/* Donor Card */
+.donor-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.donor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(192, 57, 43, 0.25);
+}
+
+/* Top section */
+.donor-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.donor-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-red-dim);
+}
+
+/* Availability badge */
+.donor-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+}
+
+.badge-available {
+  background-color: rgba(39, 174, 96, 0.15);
+  color: #2ecc71;
+}
+
+.badge-unavailable {
+  background-color: rgba(192, 57, 43, 0.15);
+  color: var(--color-red-bright);
+}
+
+/* Donor details */
+.donor-card-info {
+  margin-bottom: 1.5rem;
+}
+
+.donor-name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
+
+.donor-blood-type {
+  display: inline-block;
+  background-color: var(--color-red);
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.2rem 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+}
+
+.donor-location {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.donor-distance {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Action buttons */
+.donor-card-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.donor-btn-call {
+  flex: 1;
+  background-color: var(--color-red);
+  color: var(--color-text);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.donor-btn-call:hover {
+  background-color: var(--color-red-bright);
+}
+
+.donor-btn-message {
+  flex: 1;
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.donor-btn-message:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}

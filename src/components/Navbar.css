@@ -1,0 +1,113 @@
+/* Top Bar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-red-dim);
+  z-index: 999;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.top-bar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar-icon {
+  font-size: 1.8rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-text);
+  letter-spacing: 2px;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.8rem 1rem;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-red-dim);
+  z-index: 999;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.bottom-nav-hidden {
+  transform: translateY(60%);
+  opacity: 0.15;
+}
+
+.bottom-nav-hidden .bottom-nav-label {
+  display: none;
+}
+
+/* Nav Links */
+.bottom-nav-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+
+.bottom-nav-link:hover {
+  color: var(--color-red-bright);
+}
+
+.bottom-nav-icon {
+  font-size: 1.3rem;
+}
+
+.bottom-nav-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Emergency Button */
+.bottom-nav-emergency {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  background-color: var(--color-red);
+  color: var(--color-text);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-top: -2rem;
+  box-shadow: 0 0 20px rgba(192, 57, 43, 0.6);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bottom-nav-emergency:hover {
+  background-color: var(--color-red-bright);
+  transform: scale(1.1);
+}
+
+/* Float animation */
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
