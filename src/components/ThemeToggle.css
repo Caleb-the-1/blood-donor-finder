@@ -1,0 +1,24 @@
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  background: rgba(192, 57, 43, 0.15);
+  color: var(--color-text);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-red);
+  color: #ffffff;
+  border-color: var(--color-red);
+}

@@ -1,0 +1,119 @@
+/* Profile Page */
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background-color: var(--color-bg);
+}
+
+/* Profile Card */
+.profile-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.15);
+}
+
+/* Avatar */
+.profile-avatar-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid var(--color-red);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(192, 57, 43, 0.4);
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Name and details */
+.profile-name {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-text);
+}
+
+.profile-blood-type {
+  background-color: var(--color-red);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+}
+
+.profile-location {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.profile-status {
+  font-size: 0.9rem;
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+/* Stats row */
+.profile-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-red-dim);
+  width: 100%;
+  justify-content: center;
+}
+
+.profile-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.profile-stat-number {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-red-bright);
+}
+
+.profile-stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Edit button */
+.profile-edit-btn {
+  width: 100%;
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.profile-edit-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}

@@ -111,3 +111,29 @@
   50%  { transform: translateY(-5px); }
   100% { transform: translateY(0px); }
 }
+
+/* Remove underline from logo link */
+.navbar-logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Light mode glass effect for top bar */
+body.light .top-bar {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(192, 57, 43, 0.2);
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.1);
+}
+
+/* Light mode glass effect for bottom nav */
+body.light .bottom-nav {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(192, 57, 43, 0.2);
+  box-shadow: 0 -4px 20px rgba(192, 57, 43, 0.1);
+}

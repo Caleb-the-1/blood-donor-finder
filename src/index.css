@@ -55,3 +55,14 @@ h1 {
   background: var(--color-red-dim);
   border-radius: 10px;
 }
+
+/* Light Mode Colors */
+body.light {
+  --color-bg:         #ffffff;
+  --color-surface:    #fff0f0;
+  --color-red:        #c0392b;
+  --color-red-bright: #e74c3c;
+  --color-red-dim:    #f5c0c0;
+  --color-text:       #1a0000;
+  --color-text-muted: #7a4040;
+}

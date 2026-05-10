@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react'
-
-
+import { Link } from 'react-router-dom'
 
 function Navbar() {
 
-  // This remembers the LAST scroll position
   const [lastScroll, setLastScroll] = useState(0)
-
-  // This remembers if navbar should be hidden or visible
   const [hidden, setHidden] = useState(false)
 
-  // This runs every time the user scrolls
   useEffect(() => {
-
     function handleScroll() {
       const currentScroll = window.scrollY
       if (currentScroll > lastScroll && currentScroll > 80) {
@@ -24,47 +18,46 @@ function Navbar() {
       setLastScroll(currentScroll)
     }
     window.addEventListener('scroll', handleScroll)
-
     return () => window.removeEventListener('scroll', handleScroll)
-
   }, [lastScroll])
 
   return (
     <>
-      {/* TOP — Logo bar */}
+      {/* TOP — Logo */}
       <header className={`top-bar ${hidden ? 'top-bar-hidden' : ''}`}>
-        <span className="navbar-icon">🩸</span>
-        <span className="navbar-brand">BloodLink</span>
+        <Link to="/" className="navbar-logo-link">
+          <span className="navbar-icon">🩸</span>
+          <span className="navbar-brand">BloodLink</span>
+        </Link>
       </header>
 
-      {/* BOTTOM — Navigation links */}
+      {/* BOTTOM — Navigation */}
       <nav className={`bottom-nav ${hidden ? 'bottom-nav-hidden' : ''}`}>
 
-        <a href="#home" className="bottom-nav-link">
+        <Link to="/" className="bottom-nav-link">
           <span className="bottom-nav-icon">🏠</span>
           <span className="bottom-nav-label">Home</span>
-        </a>
+        </Link>
 
-        <a href="#find" className="bottom-nav-link">
+        <Link to="/find" className="bottom-nav-link">
           <span className="bottom-nav-icon">🔍</span>
           <span className="bottom-nav-label">Find Donor</span>
-        </a>
+        </Link>
 
-        
-        <a href="#request" className="bottom-nav-emergency">
+        <Link to="/request" className="bottom-nav-emergency">
           <span className="bottom-nav-icon">🚨</span>
           <span className="bottom-nav-label">Request</span>
-        </a>
+        </Link>
 
-        <a href="#register" className="bottom-nav-link">
+        <Link to="/register" className="bottom-nav-link">
           <span className="bottom-nav-icon">💉</span>
           <span className="bottom-nav-label">Be a Donor</span>
-        </a>
+        </Link>
 
-        <a href="#profile" className="bottom-nav-link">
+        <Link to="/profile" className="bottom-nav-link">
           <span className="bottom-nav-icon">👤</span>
           <span className="bottom-nav-label">Profile</span>
-        </a>
+        </Link>
 
       </nav>
     </>
