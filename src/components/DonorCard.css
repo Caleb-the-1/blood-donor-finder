@@ -123,3 +123,16 @@
   border-color: var(--color-red-bright);
   color: var(--color-red-bright);
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .donor-heading {
+    font-size: 2rem;
+  }
+
+  .donor-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

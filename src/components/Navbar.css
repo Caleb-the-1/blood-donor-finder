@@ -137,3 +137,23 @@ body.light .bottom-nav {
   border-top: 1px solid rgba(192, 57, 43, 0.2);
   box-shadow: 0 -4px 20px rgba(192, 57, 43, 0.1);
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .top-bar {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .theme-toggle {
+    top: 0.8rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+}

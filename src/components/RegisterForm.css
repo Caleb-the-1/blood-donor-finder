@@ -179,3 +179,20 @@
   background-color: var(--color-red-bright);
   transform: translateY(-2px);
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .register-heading {
+    font-size: 2rem;
+  }
+
+  .register-card {
+    padding: 1.5rem;
+  }
+
+  .register-type-choices {
+    flex-direction: column;
+  }
+
+}

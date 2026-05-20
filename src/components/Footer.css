@@ -97,3 +97,16 @@
   font-size: 0.85rem;
   color: var(--color-text-muted);
 }
+/* Mobile */
+@media (max-width: 768px) {
+
+  .footer {
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+}

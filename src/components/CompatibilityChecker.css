@@ -1,5 +1,5 @@
-/* SEARCH SECTION WRAPPER */
-.search-section {
+/* Checker Section */
+.checker-section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -7,16 +7,15 @@
   justify-content: center;
   padding: 6rem 2rem;
   background-color: var(--color-surface);
-  position: relative;
 }
 
-/* SECTION HEADER */
-.search-header {
+/* Header */
+.checker-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.search-tag {
+.checker-tag {
   display: inline-block;
   background-color: var(--color-red-dim);
   color: var(--color-text);
@@ -29,7 +28,7 @@
   margin-bottom: 1.2rem;
 }
 
-.search-heading {
+.checker-heading {
   font-family: var(--font-heading);
   font-size: 2.8rem;
   color: var(--color-text);
@@ -37,11 +36,11 @@
   margin-bottom: 1rem;
 }
 
-.search-heading-red {
+.checker-heading-red {
   color: var(--color-red-bright);
 }
 
-.search-subtext {
+.checker-subtext {
   font-size: 1rem;
   color: var(--color-text-muted);
   max-width: 460px;
@@ -49,8 +48,8 @@
   line-height: 1.8;
 }
 
-/* THE SEARCH CARD*/
-.search-card {
+/* Card */
+.checker-card {
   background-color: var(--color-bg);
   border: 1px solid var(--color-red-dim);
   border-radius: 16px;
@@ -60,28 +59,23 @@
   box-shadow: 0 0 40px rgba(192, 57, 43, 0.15);
 }
 
-/* EACH FIELD INSIDE THE CARD*/
-.search-field {
-  margin-bottom: 2rem;
-}
-
-.search-label {
+.checker-label {
   display: block;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-text);
   margin-bottom: 1rem;
-  letter-spacing: 0.5px;
 }
 
-/* BLOOD TYPE BUTTONS GRID*/
-.blood-type-grid {
+/* Blood type grid */
+.checker-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.8rem;
+  margin-bottom: 2rem;
 }
 
-.blood-type-btn {
+.checker-type-btn {
   background-color: var(--color-surface);
   color: var(--color-text-muted);
   border: 1px solid var(--color-red-dim);
@@ -90,82 +84,92 @@
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
+  font-family: var(--font-body);
   transition: all 0.2s ease;
 }
 
-.blood-type-btn:hover {
+.checker-type-btn:hover {
   border-color: var(--color-red-bright);
   color: var(--color-red-bright);
 }
 
-
-.blood-type-btn-active {
+.checker-type-active {
   background-color: var(--color-red);
   border-color: var(--color-red);
   color: var(--color-text);
   box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
 }
 
-/*LOCATION INPUT*/
-.search-input {
-  width: 100%;
+/* Results */
+.checker-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeUp 0.4s ease forwards;
+}
+
+.checker-result-box {
   background-color: var(--color-surface);
   border: 1px solid var(--color-red-dim);
-  border-radius: 8px;
-  padding: 0.9rem 1.2rem;
-  font-size: 1rem;
-  color: var(--color-text);
-  font-family: var(--font-body);
-  outline: none;
-  transition: border-color 0.3s ease;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
 }
 
-/* Glows red when clicked on */
-.search-input:focus {
-  border-color: var(--color-red-bright);
-  box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
-}
-
-/* The placeholder text colour */
-.search-input::placeholder {
-  color: var(--color-text-muted);
-}
-
-/*SEARCH BUTTON */
-.search-btn {
-  width: 100%;
-  background-color: var(--color-red);
-  color: var(--color-text);
-  border: none;
-  border-radius: 8px;
-  padding: 1rem;
-  font-size: 1rem;
+.checker-result-title {
+  font-size: 0.9rem;
   font-weight: 700;
-  font-family: var(--font-body);
-  cursor: pointer;
+  color: var(--color-text);
+  margin-bottom: 1rem;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.search-btn:hover {
-  background-color: var(--color-red-bright);
-  transform: translateY(-2px);
+.checker-result-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Green tags — donate to */
+.checker-tag-green {
+  background-color: rgba(39, 174, 96, 0.15);
+  color: #2ecc71;
+  border: 1px solid rgba(39, 174, 96, 0.3);
+  border-radius: 6px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Red tags — receive from */
+.checker-tag-red {
+  background-color: rgba(192, 57, 43, 0.15);
+  color: var(--color-red-bright);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 6px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Fun fact */
+.checker-fun-fact {
+  background-color: rgba(192, 57, 43, 0.1);
+  border-left: 3px solid var(--color-red-bright);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  font-weight: 500;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-
-  .search-heading {
+  .checker-heading {
     font-size: 2rem;
   }
 
-  .search-card {
+  .checker-card {
     padding: 1.5rem;
   }
-
-  .blood-type-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
 }

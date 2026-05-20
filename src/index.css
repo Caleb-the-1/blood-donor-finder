@@ -66,3 +66,12 @@ body.light {
   --color-text:       #1a0000;
   --color-text-muted: #7a4040;
 }
+
+/*MOBILE — screens smaller than 768px */
+@media (max-width: 768px) {
+
+  .app {
+    overflow-x: hidden;
+  }
+
+}

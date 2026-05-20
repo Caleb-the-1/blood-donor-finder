@@ -44,7 +44,7 @@ function Navbar() {
           <span className="bottom-nav-label">Find Donor</span>
         </Link>
 
-        <Link to="/request" className="bottom-nav-emergency">
+        <Link to="/sos" className="bottom-nav-emergency">
           <span className="bottom-nav-icon">🚨</span>
           <span className="bottom-nav-label">Request</span>
         </Link>

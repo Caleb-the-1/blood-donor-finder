@@ -159,3 +159,20 @@
   50%  { box-shadow: 0 0 30px rgba(192, 57, 43, 0.8); }
   100% { box-shadow: 0 0 10px rgba(192, 57, 43, 0.4); }
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .request-heading {
+    font-size: 2rem;
+  }
+
+  .request-card {
+    padding: 1.5rem;
+  }
+
+  .urgency-choices {
+    flex-direction: column;
+  }
+
+}
