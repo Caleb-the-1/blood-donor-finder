@@ -1,4 +1,5 @@
-import React from 'react'
+import AvailabilityToggle from '../components/AvailabilityToggle'
+import '../components/AvailabilityToggle.css'
 
 function Profile() {
   return (
@@ -15,11 +16,9 @@ function Profile() {
           />
         </div>
 
-        {/* Details */}
         <h2 className="profile-name">Chidi Nwosu</h2>
         <span className="profile-blood-type">A+</span>
         <p className="profile-location">📍 Ado-Ekiti, Ekiti</p>
-        <p className="profile-status">✅ Available to Donate</p>
 
         {/* Stats */}
         <div className="profile-stats">
@@ -37,9 +36,13 @@ function Profile() {
           </div>
         </div>
 
-        {/* Edit button */}
         <button className="profile-edit-btn">✏️ Edit Profile</button>
 
+      </div>
+
+      {/* Availability toggle below profile card */}
+      <div style={{ marginTop: '2rem' }}>
+        <AvailabilityToggle />
       </div>
 
     </div>

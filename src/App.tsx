@@ -13,6 +13,9 @@ import RequestBlood from './pages/RequestBlood'
 import Profile from './pages/Profile'
 import SOS from './pages/SOS'
 import Compatibility from './pages/Compatibility'
+import ReviewsPage from './pages/ReviewsPage'
+import MapPage from './pages/MapPage'
+import Hospitals from './pages/Hospitals'
 
 import './components/Navbar.css'
 import './components/HeroSection.css'
@@ -42,6 +45,9 @@ function App() {
         <Route path="/profile"       element={<Profile />} />
         <Route path="/sos"           element={<SOS />} />
         <Route path="/compatibility" element={<Compatibility />} />
+        <Route path="/reviews"       element={<ReviewsPage />} />
+        <Route path="/map"           element={<MapPage />} />
+        <Route path="/hospitals"     element={<Hospitals />} />
       </Routes>
 
       <Footer />

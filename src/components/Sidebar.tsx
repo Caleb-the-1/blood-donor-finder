@@ -88,6 +88,16 @@ function Sidebar() {
             Compatibility Checker
           </Link>
 
+          <Link to="/reviews" className="sidebar-link" onClick={closeSidebar}>
+  <span className="sidebar-link-icon">⭐</span>
+  Reviews
+</Link>
+
+<Link to="/map" className="sidebar-link" onClick={closeSidebar}>
+  <span className="sidebar-link-icon">🗺️</span>
+  Live Donor Map
+</Link>
+
           <Link to="/leaderboard" className="sidebar-link" onClick={closeSidebar}>
             <span className="sidebar-link-icon">📊</span>
             Donor Leaderboard

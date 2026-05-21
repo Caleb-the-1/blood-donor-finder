@@ -1,0 +1,211 @@
+/* Hospital Section */
+.hospital-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 2rem;
+  background-color: var(--color-bg);
+}
+
+/* Header */
+.hospital-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.hospital-tag {
+  display: inline-block;
+  background-color: var(--color-red-dim);
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+}
+
+.hospital-heading {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hospital-heading-red {
+  color: var(--color-red-bright);
+}
+
+.hospital-subtext {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Filter buttons */
+.hospital-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hospital-filter-btn {
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 20px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hospital-filter-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+.filter-active {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: var(--color-text);
+}
+
+/* Hospital Grid */
+.hospital-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Hospital Card */
+.hospital-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hospital-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(192, 57, 43, 0.2);
+}
+
+/* Card top */
+.hospital-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.hospital-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 0.3rem;
+}
+
+.hospital-full-name {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.hospital-rating {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-red-bright);
+  white-space: nowrap;
+}
+
+/* Details */
+.hospital-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hospital-detail {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.detail-yes {
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+.detail-no {
+  color: var(--color-red-bright);
+  font-weight: 600;
+}
+
+/* Blood types */
+.hospital-blood-label {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.hospital-blood-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.hospital-blood-tag {
+  background-color: rgba(192, 57, 43, 0.15);
+  color: var(--color-red-bright);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 6px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Call button */
+.hospital-call-btn {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  background-color: var(--color-red);
+  color: var(--color-text);
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: auto;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hospital-call-btn:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hospital-heading {
+    font-size: 2rem;
+  }
+
+  .hospital-grid {
+    grid-template-columns: 1fr;
+  }
+}
