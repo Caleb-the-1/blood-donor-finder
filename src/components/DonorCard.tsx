@@ -1,5 +1,3 @@
-import React from 'react'
-
 // This describes what ONE donor looks like as data
 interface DonorProps {
   name: string

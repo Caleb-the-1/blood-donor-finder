@@ -1,4 +1,3 @@
-import React from 'react'
 import DonorCard from './DonorCard'
 
 // Fake donors so we can see the cards on screen
