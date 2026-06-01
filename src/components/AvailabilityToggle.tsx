@@ -1,9 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getCurrentUser } from '../appwrite'
 
 function AvailabilityToggle() {
 
-  const [available, setAvailable] = useState(false)
+  const [available, setAvailable]     = useState(false)
   const [lastUpdated, setLastUpdated] = useState('')
+  const [user, setUser]               = useState<any>(null)
+
+  useEffect(() => {
+    async function fetchUser() {
+      const currentUser = await getCurrentUser()
+      setUser(currentUser)
+    }
+    fetchUser()
+  }, [])
 
   function handleToggle() {
     const newStatus = !available
@@ -19,23 +29,30 @@ function AvailabilityToggle() {
   return (
     <div className="toggle-wrapper">
 
-      {/* Status indicator */}
+      {/* Status ring */}
       <div className={`toggle-status-ring ${available ? 'ring-available' : 'ring-unavailable'}`}>
         <div className="toggle-avatar">
-          <img
-            src="https://randomuser.me/api/portraits/men/32.jpg"
-            alt="Donor"
-            className="toggle-avatar-img"
-          />
-          {/* Live dot */}
+          {user ? (
+            <div className="toggle-avatar-initials">
+              {user.name?.charAt(0).toUpperCase()}
+            </div>
+          ) : (
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="Donor"
+              className="toggle-avatar-img"
+            />
+          )}
           <span className={`toggle-dot ${available ? 'dot-available' : 'dot-unavailable'}`} />
         </div>
       </div>
 
       {/* Status text */}
       <div className="toggle-info">
-        <h3 className="toggle-name">Chidi Nwosu</h3>
-        <p className="toggle-blood">🩸 Blood Type: A+</p>
+        <h3 className="toggle-name">
+          {user ? user.name : 'Chidi Nwosu'}
+        </h3>
+        <p className="toggle-blood">🩸 Donor</p>
         <p className={`toggle-status-text ${available ? 'text-available' : 'text-unavailable'}`}>
           {available ? '✅ You are Available to Donate' : '❌ You are Currently Unavailable'}
         </p>
@@ -44,7 +61,7 @@ function AvailabilityToggle() {
         )}
       </div>
 
-      {/* The toggle switch */}
+      {/* Toggle switch */}
       <div className="toggle-switch-wrapper">
         <span className="toggle-switch-label">
           {available ? 'Available' : 'Unavailable'}
@@ -57,7 +74,7 @@ function AvailabilityToggle() {
         </div>
       </div>
 
-      {/* Message based on status */}
+      {/* Message */}
       <div className={`toggle-message ${available ? 'message-available' : 'message-unavailable'}`}>
         {available
           ? '🩸 Donors near you can now see you are ready to donate. Thank you for saving lives!'

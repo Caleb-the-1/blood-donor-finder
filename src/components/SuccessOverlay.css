@@ -1,0 +1,186 @@
+/* Full screen overlay */
+.overlay-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: overlayFadeIn 0.4s ease forwards;
+}
+
+/* Card */
+.overlay-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  width: 90%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  box-shadow:
+    0 0 60px rgba(192, 57, 43, 0.3),
+    0 0 120px rgba(192, 57, 43, 0.1);
+  animation: cardSlideUp 0.5s ease forwards;
+}
+
+/* Blood drop wrapper */
+.overlay-drop-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Blood drop emoji */
+.overlay-drop {
+  font-size: 3.5rem;
+  animation: dropBounce 1s ease infinite alternate;
+  position: relative;
+  z-index: 2;
+}
+
+/* Pulsing rings around drop */
+.overlay-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlay-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--color-red-bright);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ringExpand 2s ease-out infinite;
+}
+
+.ring-1 { width: 60px;  height: 60px; animation-delay: 0s; }
+.ring-2 { width: 80px;  height: 80px; animation-delay: 0.4s; }
+.ring-3 { width: 100px; height: 100px; animation-delay: 0.8s; }
+
+/* Success tick */
+.overlay-tick {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(46, 204, 113, 0.15);
+  border: 2px solid #2ecc71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #2ecc71;
+  font-weight: 700;
+  animation: tickPop 0.5s ease forwards;
+}
+
+/* Text */
+.overlay-title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-text);
+  margin-top: 0.5rem;
+}
+
+.overlay-subtitle {
+  font-size: 1rem;
+  color: var(--color-red-bright);
+  font-weight: 600;
+}
+
+.overlay-message {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 320px;
+}
+
+/* Progress bar */
+.overlay-progress {
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-red-dim);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.overlay-progress-bar {
+  height: 100%;
+  background-color: var(--color-red-bright);
+  border-radius: 4px;
+  animation: progressShrink 4s linear forwards;
+}
+
+.overlay-closing {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Close button */
+.overlay-close-btn {
+  background: transparent;
+  border: 1px solid var(--color-red-dim);
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.overlay-close-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+/* Animations */
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes cardSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dropBounce {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-10px); }
+}
+
+@keyframes ringExpand {
+  0%   { opacity: 0.8; transform: translate(-50%, -50%) scale(0.5); }
+  100% { opacity: 0;   transform: translate(-50%, -50%) scale(1.5); }
+}
+
+@keyframes tickPop {
+  0%   { transform: scale(0); }
+  70%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes progressShrink {
+  from { width: 100%; }
+  to   { width: 0%; }
+}

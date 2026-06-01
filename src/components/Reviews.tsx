@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createReview } from '../appwrite'
 
 const existingReviews = [
   {
@@ -64,28 +65,42 @@ function Reviews() {
     type: 'Individual Donor',
   })
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!newReview.name || !newReview.comment || newReview.rating === 0) {
       alert('Please fill in all fields and give a star rating!')
       return
     }
 
-    const review = {
-      id: reviews.length + 1,
-      name: newReview.name,
-      rating: newReview.rating,
-      comment: newReview.comment,
-      date: new Date().toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-      }),
-      type: newReview.type,
-    }
+    const date = new Date().toLocaleDateString('en-GB', {
+      day: 'numeric', month: 'long', year: 'numeric',
+    })
 
-    setReviews([review, ...reviews])
-    setNewReview({ name: '', rating: 0, comment: '', type: 'Individual Donor' })
-    alert('Thank you for your review! ❤️')
+    try {
+      await createReview({
+        name:    newReview.name,
+        rating:  newReview.rating,
+        comment: newReview.comment,
+        type:    newReview.type,
+        date:    date,
+      })
+
+      const review = {
+        id: reviews.length + 1,
+        name: newReview.name,
+        rating: newReview.rating,
+        comment: newReview.comment,
+        date: date,
+        type: newReview.type,
+      }
+
+      setReviews([review, ...reviews])
+      setNewReview({ name: '', rating: 0, comment: '', type: 'Individual Donor' })
+      alert('Thank you for your review! ❤️')
+
+    } catch (error) {
+      alert('Something went wrong! Please try again.')
+      console.error(error)
+    }
   }
 
   const averageRating = (
@@ -95,7 +110,6 @@ function Reviews() {
   return (
     <section className="reviews-section" id="reviews">
 
-      {/* Header */}
       <div className="reviews-header">
         <span className="reviews-tag">⭐ Reviews</span>
         <h2 className="reviews-heading">
@@ -106,7 +120,6 @@ function Reviews() {
           Hear from people whose lives were saved through BloodLink.
         </p>
 
-        {/* Overall rating */}
         <div className="reviews-overall">
           <span className="reviews-overall-number">{averageRating}</span>
           <StarRating rating={Math.round(Number(averageRating))} />
@@ -114,11 +127,9 @@ function Reviews() {
         </div>
       </div>
 
-      {/* Review cards */}
       <div className="reviews-grid">
         {reviews.map((review) => (
           <div key={review.id} className="review-card">
-
             <div className="review-card-top">
               <div>
                 <h4 className="review-name">{review.name}</h4>
@@ -126,15 +137,12 @@ function Reviews() {
               </div>
               <span className="review-date">{review.date}</span>
             </div>
-
             <StarRating rating={review.rating} />
             <p className="review-comment">{review.comment}</p>
-
           </div>
         ))}
       </div>
 
-      {/* Leave a review form */}
       <div className="review-form">
         <h3 className="review-form-title">Leave a Review</h3>
 

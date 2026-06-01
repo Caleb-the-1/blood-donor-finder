@@ -110,6 +110,11 @@ function Sidebar() {
 
           <p className="sidebar-nav-label">Account</p>
 
+          <Link to="/auth" className="sidebar-link" onClick={closeSidebar}>
+  <span className="sidebar-link-icon">🔐</span>
+  Sign In / Sign Up
+</Link>
+
           <Link to="/register" className="sidebar-link" onClick={closeSidebar}>
             <span className="sidebar-link-icon">💉</span>
             Become a Donor

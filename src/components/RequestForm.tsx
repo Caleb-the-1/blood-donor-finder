@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { createRequest } from '../appwrite'
+import SuccessOverlay from './SuccessOverlay'
+import './SuccessOverlay.css'
 
 function RequestForm() {
 
@@ -10,6 +13,8 @@ function RequestForm() {
     phone: '',
     urgency: '',
   })
+  const [loading, setLoading] = useState(false)
+  const [showOverlay, setShowOverlay] = useState(false)
 
   const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
   const urgencyLevels = ['🔴 Critical', '🟡 Urgent', '🟢 Scheduled']
@@ -18,18 +23,40 @@ function RequestForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!formData.patientName || !formData.bloodType || !formData.hospital || !formData.location || !formData.phone || !formData.urgency) {
       alert('Please fill in all fields!')
       return
     }
-    alert(`🚨 Emergency request sent! Nearby ${formData.bloodType} donors are being notified now!`)
+
+    try {
+      setLoading(true)
+      await createRequest({
+        patientName: formData.patientName,
+        bloodType:   formData.bloodType,
+        hospital:    formData.hospital,
+        location:    formData.location,
+        phone:       formData.phone,
+        urgency:     formData.urgency,
+        status:      'pending',
+      })
+      setShowOverlay(true)
+      setFormData({ patientName: '', bloodType: '', hospital: '', location: '', phone: '', urgency: '' })
+    } catch (error) {
+      alert('Something went wrong! Please try again.')
+      console.error(error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <section className="request-section" id="request">
 
-      {/* Section heading */}
+      {showOverlay && (
+        <SuccessOverlay onClose={() => setShowOverlay(false)} />
+      )}
+
       <div className="request-header">
         <span className="request-tag">🚨 Emergency Request</span>
         <h2 className="request-heading">
@@ -42,7 +69,6 @@ function RequestForm() {
         </p>
       </div>
 
-      {/* Urgency level picker */}
       <div className="request-card">
 
         <div className="request-field">
@@ -60,7 +86,6 @@ function RequestForm() {
           </div>
         </div>
 
-        {/* Patient name */}
         <div className="request-field">
           <label className="request-label">Patient Name</label>
           <input
@@ -73,7 +98,6 @@ function RequestForm() {
           />
         </div>
 
-        {/* Blood type */}
         <div className="request-field">
           <label className="request-label">🩸 Blood Type Needed</label>
           <div className="blood-type-grid">
@@ -89,7 +113,6 @@ function RequestForm() {
           </div>
         </div>
 
-        {/* Hospital */}
         <div className="request-field">
           <label className="request-label">🏥 Hospital Name</label>
           <input
@@ -102,7 +125,6 @@ function RequestForm() {
           />
         </div>
 
-        {/* Location */}
         <div className="request-field">
           <label className="request-label">📍 Location</label>
           <input
@@ -115,7 +137,6 @@ function RequestForm() {
           />
         </div>
 
-        {/* Phone */}
         <div className="request-field">
           <label className="request-label">📞 Contact Phone</label>
           <input
@@ -128,9 +149,12 @@ function RequestForm() {
           />
         </div>
 
-        {/* Submit button */}
-        <button className="request-btn" onClick={handleSubmit}>
-          🚨 Send Emergency Request
+        <button
+          className="request-btn"
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading ? '⏳ Sending...' : '🚨 Send Emergency Request'}
         </button>
 
       </div>

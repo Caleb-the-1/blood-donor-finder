@@ -1,0 +1,296 @@
+/* Setup Page */
+.setup-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* Step dots */
+.setup-steps {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.setup-step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-red-dim);
+  transition: all 0.4s ease;
+}
+
+.step-dot-active {
+  background-color: var(--color-red-bright);
+  width: 28px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(192, 57, 43, 0.5);
+}
+
+/* Card */
+.setup-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.15);
+}
+
+/* Card animations */
+.setup-card-enter {
+  animation: slideIn 0.5s ease forwards;
+}
+
+.setup-card-exit {
+  animation: slideOut 0.5s ease forwards;
+}
+
+/* Content inside card */
+.setup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+}
+
+.setup-emoji {
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.setup-heading {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-text);
+}
+
+.setup-subtext {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 320px;
+}
+
+/* Avatar */
+.setup-avatar-wrapper {
+  margin: 0.5rem 0;
+}
+
+.setup-avatar-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-red-bright);
+  box-shadow: 0 0 20px rgba(192, 57, 43, 0.4);
+}
+
+.setup-avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  border: 2px dashed var(--color-red-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+/* Upload button */
+.setup-upload-btn {
+  display: inline-block;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  color: var(--color-text);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.setup-upload-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+/* Gender buttons */
+.setup-gender-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.setup-gender-btn {
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 10px;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.setup-gender-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-text);
+}
+
+.gender-btn-active {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: var(--color-text);
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.4);
+}
+
+/* Next button */
+.setup-next-btn {
+  width: 100%;
+  background-color: var(--color-red);
+  color: var(--color-text);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.setup-next-btn:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-2px);
+}
+
+/* Success drop animation */
+.setup-success-drop {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.setup-success-emoji {
+  font-size: 3.5rem;
+  animation: dropBounce 1s ease infinite alternate;
+  position: relative;
+  z-index: 2;
+}
+
+.setup-success-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.setup-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--color-red-bright);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ringExpand 2s ease-out infinite;
+}
+
+.ring-a { width: 60px;  height: 60px; animation-delay: 0s; }
+.ring-b { width: 80px;  height: 80px; animation-delay: 0.4s; }
+.ring-c { width: 100px; height: 100px; animation-delay: 0.8s; }
+
+/* Success tick */
+.setup-tick {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(46, 204, 113, 0.15);
+  border: 2px solid #2ecc71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #2ecc71;
+  font-weight: 700;
+  animation: tickPop 0.5s ease forwards;
+}
+
+/* Finish button */
+.setup-finish-btn {
+  width: 100%;
+  background-color: var(--color-red);
+  color: var(--color-text);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+  transition: background-color 0.3s ease;
+}
+
+.setup-finish-btn:hover {
+  background-color: var(--color-red-bright);
+  animation: none;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-40px); }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes dropBounce {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-10px); }
+}
+
+@keyframes ringExpand {
+  0%   { opacity: 0.8; transform: translate(-50%, -50%) scale(0.5); }
+  100% { opacity: 0;   transform: translate(-50%, -50%) scale(1.5); }
+}
+
+@keyframes tickPop {
+  0%   { transform: scale(0); }
+  70%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 10px rgba(192, 57, 43, 0.4); }
+  50%  { box-shadow: 0 0 30px rgba(192, 57, 43, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(192, 57, 43, 0.4); }
+}

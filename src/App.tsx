@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ThemeToggle from './components/ThemeToggle'
 import Sidebar from './components/Sidebar'
+import Notifications from './components/Notifications'
 
 import Home from './pages/Home'
 import FindDonor from './pages/FindDonor'
@@ -16,6 +17,7 @@ import Compatibility from './pages/Compatibility'
 import ReviewsPage from './pages/ReviewsPage'
 import MapPage from './pages/MapPage'
 import Hospitals from './pages/Hospitals'
+import Auth from './pages/Auth'
 
 import './components/Navbar.css'
 import './components/HeroSection.css'
@@ -27,14 +29,17 @@ import './components/RequestForm.css'
 import './components/Footer.css'
 import './components/ThemeToggle.css'
 import './components/Sidebar.css'
+import './components/Notifications.css'
 import './pages/Profile.css'
 import './pages/SOS.css'
+import './pages/Auth.css'
 
 function App() {
   return (
     <BrowserRouter>
       <ThemeToggle />
       <Sidebar />
+      <Notifications />
       <Navbar />
 
       <Routes>
@@ -48,6 +53,7 @@ function App() {
         <Route path="/reviews"       element={<ReviewsPage />} />
         <Route path="/map"           element={<MapPage />} />
         <Route path="/hospitals"     element={<Hospitals />} />
+        <Route path="/auth"          element={<Auth />} />
       </Routes>
 
       <Footer />
