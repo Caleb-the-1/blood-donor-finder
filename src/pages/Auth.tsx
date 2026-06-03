@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { signUp, signIn } from '../appwrite'
 import SetupProfile from '../components/SetupProfile'
 import '../components/SetupProfile.css'
@@ -7,8 +7,10 @@ import '../components/SetupProfile.css'
 function Auth() {
 
   const navigate = useNavigate()
+const [searchParams]              = useSearchParams()
+const registerType                = searchParams.get('type')
 
-  const [isLogin, setIsLogin]       = useState(true)
+const [isLogin, setIsLogin]       = useState(!registerType)
   const [showSetup, setShowSetup]   = useState(false)
   const [loading, setLoading]       = useState(false)
   const [userId, setUserId]         = useState('')

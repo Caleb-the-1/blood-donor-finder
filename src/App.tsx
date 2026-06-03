@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import './components/StatsSection.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ThemeToggle from './components/ThemeToggle'
@@ -32,6 +33,8 @@ import './components/Notifications.css'
 import './pages/Profile.css'
 import './pages/SOS.css'
 import './pages/Auth.css'
+import EditProfile from './pages/EditProfile'
+import './pages/EditProfile.css'
 
 function App() {
   return (
@@ -53,6 +56,7 @@ function App() {
         <Route path="/map"           element={<MapPage />} />
         <Route path="/hospitals"     element={<Hospitals />} />
         <Route path="/auth"          element={<Auth />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
       </Routes>
 
       <Footer />

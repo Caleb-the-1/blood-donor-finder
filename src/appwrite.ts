@@ -4,7 +4,7 @@ const client = new Client()
   .setEndpoint('https://fra.cloud.appwrite.io/v1')
   .setProject('6a18b748000a9af16349')
 
-const databases = new Databases(client)
+export const databases = new Databases(client)
 const account   = new Account(client)
 const storage   = new Storage(client)
 

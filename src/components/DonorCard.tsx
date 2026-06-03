@@ -1,4 +1,3 @@
-// This describes what ONE donor looks like as data
 interface DonorProps {
   name: string
   bloodType: string
@@ -8,27 +7,38 @@ interface DonorProps {
   image: string
 }
 
-function DonorCard({ name, bloodType, location, distance, available, image }: DonorProps) {
+function DonorCard({ name, bloodType, location, distance, available }: DonorProps) {
+
+  // Get first two letters of name for avatar
+  const initials = name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2)
+
   return (
     <div className="donor-card">
 
-      {/* TOP — Avatar and availability badge */}
+      {/* TOP */}
       <div className="donor-card-top">
-        <img src={image} alt={name} className="donor-avatar" />
+        <div className="donor-avatar-initials">
+          {initials}
+        </div>
         <span className={`donor-badge ${available ? 'badge-available' : 'badge-unavailable'}`}>
           {available ? '✅ Available' : '❌ Unavailable'}
         </span>
       </div>
 
-      {/* MIDDLE — Donor details */}
+      {/* MIDDLE */}
       <div className="donor-card-info">
         <h3 className="donor-name">{name}</h3>
         <span className="donor-blood-type">{bloodType}</span>
         <p className="donor-location">📍 {location}</p>
-        <p className="donor-distance">🚗 {distance} away</p>
+        <p className="donor-distance">🚗 {distance}</p>
       </div>
 
-      {/* BOTTOM — Action buttons */}
+      {/* BOTTOM */}
       <div className="donor-card-actions">
         <button className="donor-btn-call">📞 Call</button>
         <button className="donor-btn-message">💬 Message</button>

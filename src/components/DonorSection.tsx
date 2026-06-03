@@ -1,68 +1,72 @@
+import { useState, useEffect } from 'react'
 import DonorCard from './DonorCard'
+import { getDonors } from '../appwrite'
 
-// Fake donors so we can see the cards on screen
-// We will replace this with real data later
-const fakeDonors = [
-  {
-    id: 1,
-    name: 'Amara Okafor',
-    bloodType: 'O+',
-    location: 'Ado-Ekiti, Ekiti',
-    distance: '1.2km',
-    available: true,
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
-  },
-  {
-    id: 2,
-    name: 'Chidi Nwosu',
-    bloodType: 'A+',
-    location: 'Ikere-Ekiti, Ekiti',
-    distance: '3.5km',
-    available: true,
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
-  },
-  {
-    id: 3,
-    name: 'Fatima Bello',
-    bloodType: 'B-',
-    location: 'Ikole-Ekiti, Ekiti',
-    distance: '5.1km',
-    available: false,
-    image: 'https://randomuser.me/api/portraits/women/68.jpg',
-  },
-  {
-    id: 4,
-    name: 'Emeka Eze',
-    bloodType: 'AB+',
-    location: 'Aramoko-Ekiti, Ekiti',
-    distance: '2.8km',
-    available: true,
-    image: 'https://randomuser.me/api/portraits/men/75.jpg',
-  },
-  {
-    id: 5,
-    name: 'Ngozi Adeyemi',
-    bloodType: 'O-',
-    location: 'Oye-Ekiti, Ekiti',
-    distance: '7.3km',
-    available: true,
-    image: 'https://randomuser.me/api/portraits/women/12.jpg',
-  },
-  {
-    id: 6,
-    name: 'Tunde Bakare',
-    bloodType: 'A-',
-    location: 'Ijero-Ekiti, Ekiti',
-    distance: '4.6km',
-    available: false,
-    image: 'https://randomuser.me/api/portraits/men/52.jpg',
-  },
-]
 function DonorSection() {
+
+  const [donors, setDonors]   = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError]     = useState(false)
+
+  useEffect(() => {
+    async function fetchDonors() {
+      try {
+        const result = await getDonors()
+        setDonors(result.documents)
+      } catch (err) {
+        console.error(err)
+        setError(true)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchDonors()
+  }, [])
+
+  if (loading) {
+    return (
+      <section className="donor-section">
+        <div className="donor-loading">
+          <span className="donor-loading-drop">🩸</span>
+          <p>Finding donors near you...</p>
+        </div>
+      </section>
+    )
+  }
+
+  if (error) {
+    return (
+      <section className="donor-section">
+        <div className="donor-loading">
+          <span>⚠️</span>
+          <p>Could not load donors. Please try again.</p>
+        </div>
+      </section>
+    )
+  }
+
+  if (donors.length === 0) {
+    return (
+      <section className="donor-section">
+        <div className="donor-header">
+          <span className="donor-tag">💉 Nearby Donors</span>
+          <h2 className="donor-heading">
+            Donors Ready To <br />
+            <span className="donor-heading-red">Save Your Life</span>
+          </h2>
+        </div>
+        <div className="donor-empty">
+          <span>🩸</span>
+          <p>No donors registered yet in your area.</p>
+          <p>Be the first to register and save lives!</p>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="donor-section" id="donors">
 
-      {/* Section heading */}
       <div className="donor-header">
         <span className="donor-tag">💉 Nearby Donors</span>
         <h2 className="donor-heading">
@@ -75,17 +79,16 @@ function DonorSection() {
         </p>
       </div>
 
-      {/* Grid of donor cards */}
       <div className="donor-grid">
-        {fakeDonors.map((donor) => (
+        {donors.map((donor) => (
           <DonorCard
-            key={donor.id}
+            key={donor.$id}
             name={donor.name}
             bloodType={donor.bloodType}
             location={donor.location}
-            distance={donor.distance}
+            distance="Nearby"
             available={donor.available}
-            image={donor.image}
+            image=""
           />
         ))}
       </div>

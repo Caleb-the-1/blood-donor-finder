@@ -1,0 +1,137 @@
+/* Stats Section */
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 2rem;
+  background-color: var(--color-surface);
+}
+
+/* Header */
+.stats-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.stats-tag {
+  display: inline-block;
+  background-color: var(--color-red-dim);
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+}
+
+.stats-heading {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.stats-heading-red {
+  color: var(--color-red-bright);
+}
+
+.stats-subtext {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Stat card */
+.stat-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease;
+}
+
+.stat-card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat-card:hover {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 10px 30px rgba(192, 57, 43, 0.2);
+  transform: translateY(-4px);
+}
+
+.stat-icon {
+  font-size: 2rem;
+}
+
+.stat-number-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--color-red-bright);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-loading {
+  font-size: 2rem;
+  color: var(--color-red-dim);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-heading {
+    font-size: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
+}
+
+@keyframes pulse {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.3; }
+  100% { opacity: 1; }
+}

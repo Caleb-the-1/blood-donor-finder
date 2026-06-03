@@ -135,3 +135,34 @@
     height: 350px;
   }
 }
+
+/* Loading state */
+.map-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-text-muted);
+  padding: 4rem 0;
+  font-size: 1rem;
+}
+
+.map-loading span {
+  font-size: 3rem;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* Empty state */
+.map-empty {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  border-top: 1px solid var(--color-red-dim);
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}

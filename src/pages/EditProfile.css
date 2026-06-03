@@ -1,0 +1,529 @@
+/* Edit Profile Page */
+.edit-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background-color: var(--color-bg);
+}
+
+/* Card */
+.edit-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header */
+.edit-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-red-dim);
+}
+
+.edit-back-btn {
+  background: transparent;
+  border: 1px solid var(--color-red-dim);
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-back-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+.edit-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+/* Success */
+.edit-success {
+  background-color: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  color: #2ecc71;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Avatar section */
+.edit-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edit-avatar-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-red-bright);
+  box-shadow: 0 0 20px rgba(192, 57, 43, 0.4);
+}
+
+.edit-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edit-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  font-family: var(--font-heading);
+}
+
+.edit-upload-btn {
+  display: inline-block;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  color: var(--color-text);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-upload-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+/* Fields */
+.edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.edit-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.edit-input {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.edit-input:focus {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+}
+
+.edit-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Blood type grid */
+.edit-blood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+
+.edit-blood-btn {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-blood-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+.edit-blood-active {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: white;
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+}
+
+/* Gender buttons */
+.edit-gender-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.edit-gender-btn {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-gender-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-text);
+}
+
+.edit-gender-active {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: white;
+}
+
+/* Save button */
+.edit-save-btn {
+  width: 100%;
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-save-btn:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-2px);
+}
+
+.edit-save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading */
+.edit-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-text-muted);
+}
+
+.edit-loading-drop {
+  font-size: 3rem;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .edit-card {
+    padding: 1.5rem;
+  }
+}/* Edit Profile Page */
+.edit-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background-color: var(--color-bg);
+}
+
+/* Card */
+.edit-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header */
+.edit-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-red-dim);
+}
+
+.edit-back-btn {
+  background: transparent;
+  border: 1px solid var(--color-red-dim);
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-back-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+.edit-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+/* Success */
+.edit-success {
+  background-color: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  color: #2ecc71;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Avatar section */
+.edit-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edit-avatar-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-red-bright);
+  box-shadow: 0 0 20px rgba(192, 57, 43, 0.4);
+}
+
+.edit-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edit-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  font-family: var(--font-heading);
+}
+
+.edit-upload-btn {
+  display: inline-block;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  color: var(--color-text);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-upload-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+/* Fields */
+.edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.edit-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.edit-input {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.edit-input:focus {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+}
+
+.edit-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Blood type grid */
+.edit-blood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+
+.edit-blood-btn {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-blood-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+.edit-blood-active {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: white;
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+}
+
+/* Gender buttons */
+.edit-gender-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.edit-gender-btn {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-gender-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-text);
+}
+
+.edit-gender-active {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: white;
+}
+
+/* Save button */
+.edit-save-btn {
+  width: 100%;
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-save-btn:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-2px);
+}
+
+.edit-save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading */
+.edit-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-text-muted);
+}
+
+.edit-loading-drop {
+  font-size: 3rem;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .edit-card {
+    padding: 1.5rem;
+  }
+}

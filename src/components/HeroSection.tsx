@@ -1,8 +1,13 @@
+import { useNavigate } from 'react-router-dom'
+
 function HeroSection() {
+
+  const navigate = useNavigate()
+
   return (
     <section className="hero">
 
-    
+      {/* LEFT — Content */}
       <div className="hero-content">
 
         <span className="hero-tag">🩸 Urgent. Real. Life-saving.</span>
@@ -17,40 +22,46 @@ function HeroSection() {
           to willing donors nearby — in minutes, not hours.
         </p>
 
-        
         <p className="hero-register-label">Register as:</p>
         <div className="hero-register-choices">
-
-          <a href="#hospital" className="hero-choice-btn">
+          <button
+            className="hero-choice-btn"
+            onClick={() => navigate('/auth?type=hospital')}
+          >
             🏥 Hospital
-          </a>
-
-          <a href="#individual" className="hero-choice-btn">
+          </button>
+          <button
+            className="hero-choice-btn"
+            onClick={() => navigate('/auth?type=individual')}
+          >
             👤 Individual
-          </a>
-
+          </button>
         </div>
 
-        
         <div className="hero-buttons">
-          <a href="#find" className="hero-btn-primary">
+          <button
+            className="hero-btn-primary"
+            onClick={() => navigate('/find')}
+          >
             🔍 Find a Donor
-          </a>
-          <a href="#register" className="hero-btn-secondary">
+          </button>
+          <button
+            className="hero-btn-secondary"
+            onClick={() => navigate('/register')}
+          >
             💉 Become a Donor
-          </a>
+          </button>
         </div>
 
       </div>
 
-      
+      {/* RIGHT — Image */}
       <div className="hero-image-wrapper">
         <img
           src="/hero.jpg"
-          alt="Blood donation"
+          alt="Blood donation moment"
           className="hero-image"
         />
-
         <div className="hero-image-fade" />
       </div>
 

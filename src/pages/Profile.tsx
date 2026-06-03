@@ -122,7 +122,12 @@ function Profile() {
           </div>
         </div>
 
-        <button className="profile-edit-btn">✏️ Edit Profile</button>
+        <button
+  className="profile-edit-btn"
+  onClick={() => navigate('/edit-profile')}
+>
+  ✏️ Edit Profile
+</button>
 
         {/* Sign out button */}
         <button className="profile-signout-btn" onClick={handleSignOut}>
