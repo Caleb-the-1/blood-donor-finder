@@ -150,3 +150,16 @@ export async function getReviews() {
     REVIEWS_TABLE
   )
 }
+
+export function subscribeToRequests(callback: (request: any) => void) {
+  return client.subscribe(
+    `databases.${DATABASE_ID}.collections.${REQUESTS_TABLE}.documents`,
+    (response: any) => {
+      if (response.events.includes(
+        'databases.*.collections.*.documents.*.create'
+      )) {
+        callback(response.payload)
+      }
+    }
+  )
+}

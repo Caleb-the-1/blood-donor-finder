@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
+import { getCurrentUser, getUserProfile, subscribeToRequests } from '../appwrite'
 
 interface Notification {
-  id: number
+  id: string
   title: string
   message: string
   time: string
@@ -16,50 +17,66 @@ function Notifications() {
   const [isOpen, setIsOpen]               = useState(false)
 
   useEffect(() => {
-    const fakeNotifications: Notification[] = [
+
+    // Starter notifications
+    const starterNotifications: Notification[] = [
       {
-        id: 1,
-        title: '🚨 Emergency Blood Request!',
-        message: 'Someone near Ado-Ekiti urgently needs O+ blood. Can you help?',
-        time: '2 minutes ago',
-        read: false,
-        type: 'emergency',
-      },
-      {
-        id: 2,
-        title: '🩸 New Donor Nearby!',
-        message: 'A new A+ donor just registered near Ikere-Ekiti.',
-        time: '15 minutes ago',
+        id: '1',
+        title: '👋 Welcome to BloodLink!',
+        message: 'You will receive live alerts here when someone nearby needs your blood type.',
+        time: 'Just now',
         read: false,
         type: 'info',
       },
       {
-        id: 3,
-        title: '✅ Request Fulfilled!',
-        message: 'The B- blood request from EKSUTH has been fulfilled. Thank you donors!',
-        time: '1 hour ago',
-        read: true,
+        id: '2',
+        title: '✅ You are All Set!',
+        message: 'Make sure your availability is switched ON so donors can find you!',
+        time: '1 minute ago',
+        read: false,
         type: 'success',
       },
-      {
-        id: 4,
-        title: '🚨 Emergency Blood Request!',
-        message: 'Someone near Aramoko-Ekiti urgently needs AB+ blood. Can you help?',
-        time: '2 hours ago',
-        read: true,
-        type: 'emergency',
-      },
-      {
-        id: 5,
-        title: '💉 Donation Reminder',
-        message: 'It has been 3 months since your last donation. You are eligible to donate again!',
-        time: '1 day ago',
-        read: true,
-        type: 'info',
-      },
     ]
-    setNotifications(fakeNotifications)
-    setUnread(fakeNotifications.filter((n) => !n.read).length)
+
+    setNotifications(starterNotifications)
+    setUnread(starterNotifications.filter((n) => !n.read).length)
+
+    // Subscribe to real time blood requests
+    const unsubscribe = subscribeToRequests(async (request) => {
+
+      // Get current user to check blood type match
+      const currentUser = await getCurrentUser()
+      if (!currentUser) return
+
+      const userProfile = await getUserProfile(currentUser.$id)
+
+      // Build the notification
+      const newNotif: Notification = {
+        id: request.$id,
+        title: '🚨 Emergency Blood Request!',
+        message: userProfile?.bloodType === request.bloodType
+          ? `🩸 URGENT! Someone near ${request.location} needs ${request.bloodType} blood — YOUR blood type! Please respond!`
+          : `Someone near ${request.location} urgently needs ${request.bloodType} blood.`,
+        time: 'Just now',
+        read: false,
+        type: 'emergency',
+      }
+
+      // Add new notification to the top of the list
+      setNotifications((prev) => [newNotif, ...prev])
+      setUnread((prev) => prev + 1)
+
+      // Play a sound alert for emergencies
+      const audio = new Audio('https://www.soundjay.com/buttons/sounds/beep-07.mp3')
+      audio.play().catch(() => {})
+
+    })
+
+    // Clean up subscription when component unmounts
+    return () => {
+      unsubscribe()
+    }
+
   }, [])
 
   function markAllRead() {
@@ -67,14 +84,14 @@ function Notifications() {
     setUnread(0)
   }
 
-  function markRead(id: number) {
+  function markRead(id: string) {
     setNotifications(notifications.map((n) =>
       n.id === id ? { ...n, read: true } : n
     ))
-    setUnread(notifications.filter((n) => !n.read && n.id !== id).length)
+    setUnread((prev) => Math.max(0, prev - 1))
   }
 
-  function deleteNotification(id: number) {
+  function deleteNotification(id: string) {
     const updated = notifications.filter((n) => n.id !== id)
     setNotifications(updated)
     setUnread(updated.filter((n) => !n.read).length)
@@ -142,7 +159,6 @@ function Notifications() {
         </div>
       )}
 
-      {/* Close overlay */}
       {isOpen && (
         <div
           className="notif-overlay"
