@@ -40,7 +40,7 @@ const [isLogin, setIsLogin]       = useState(!registerType)
 
       if (isLogin) {
         await signIn(formData.email, formData.password)
-        navigate('/')
+        navigate('/welcome')
       } else {
         const user = await signUp(formData.name, formData.email, formData.password)
         setUserId(user.$id)

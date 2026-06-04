@@ -56,7 +56,7 @@ function SetupProfile({ name, userId, email }: SetupProfileProps) {
         profilePic: pictureId,
       })
 
-      navigate('/')
+      navigate('/welcome')
 
     } catch (error: any) {
       console.error('Profile save error:', error)

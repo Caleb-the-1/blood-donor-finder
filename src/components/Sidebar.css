@@ -210,3 +210,20 @@ body.light .sidebar-link:hover {
   background-color: rgba(192, 57, 43, 0.08);
   color: var(--color-text);
 }
+/* Sign out button */
+.sidebar-signout {
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-red-bright) !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.sidebar-signout:hover {
+  background-color: rgba(192, 57, 43, 0.1) !important;
+  color: var(--color-red-bright) !important;
+  padding-left: 1.2rem;
+}

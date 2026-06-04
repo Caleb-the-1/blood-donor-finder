@@ -1,9 +1,26 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { getCurrentUser, signOut } from '../appwrite'
 
 function Sidebar() {
+  const [isOpen, setIsOpen]   = useState(false)
+  const [user, setUser]       = useState<any>(null)
+  const navigate              = useNavigate()
 
-  const [isOpen, setIsOpen] = useState(false)
+  useEffect(() => {
+    async function fetchUser() {
+      const currentUser = await getCurrentUser()
+      setUser(currentUser)
+    }
+    fetchUser()
+  }, [])
+
+  async function handleSignOut() {
+    await signOut()
+    setUser(null)
+    navigate('/auth')
+    closeSidebar()
+  }
 
   function toggleSidebar() {
     setIsOpen(!isOpen)
@@ -110,10 +127,27 @@ function Sidebar() {
 
           <p className="sidebar-nav-label">Account</p>
 
-          <Link to="/auth" className="sidebar-link" onClick={closeSidebar}>
-  <span className="sidebar-link-icon">🔐</span>
-  Sign In / Sign Up
-</Link>
+{user ? (
+  <>
+    <Link to="/welcome" className="sidebar-link" onClick={closeSidebar}>
+      <span className="sidebar-link-icon">👋</span>
+      Welcome, {user.name?.split(' ')[0]}
+    </Link>
+    <Link to="/profile" className="sidebar-link" onClick={closeSidebar}>
+      <span className="sidebar-link-icon">👤</span>
+      My Profile
+    </Link>
+    <button className="sidebar-link sidebar-signout" onClick={handleSignOut}>
+      <span className="sidebar-link-icon">🚪</span>
+      Sign Out
+    </button>
+  </>
+) : (
+  <Link to="/auth" className="sidebar-link" onClick={closeSidebar}>
+    <span className="sidebar-link-icon">🔐</span>
+    Sign In / Sign Up
+  </Link>
+)}
 
           <Link to="/register" className="sidebar-link" onClick={closeSidebar}>
             <span className="sidebar-link-icon">💉</span>

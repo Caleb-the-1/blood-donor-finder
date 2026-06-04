@@ -35,6 +35,9 @@ import './pages/SOS.css'
 import './pages/Auth.css'
 import EditProfile from './pages/EditProfile'
 import './pages/EditProfile.css'
+import Welcome from './pages/Welcome'
+import './pages/Welcome.css'
+
 
 function App() {
   return (
@@ -57,6 +60,7 @@ function App() {
         <Route path="/hospitals"     element={<Hospitals />} />
         <Route path="/auth"          element={<Auth />} />
         <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/welcome" element={<Welcome />} />
       </Routes>
 
       <Footer />

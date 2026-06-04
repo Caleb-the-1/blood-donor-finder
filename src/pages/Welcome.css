@@ -1,0 +1,282 @@
+/* Welcome Page */
+.welcome-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+  gap: 3rem;
+}
+
+/* Floating background drops */
+.welcome-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-drop {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.04;
+  animation: floatDrop 6s ease-in-out infinite;
+}
+
+.drop-a { top: 10%; left: 5%;  animation-delay: 0s;   font-size: 4rem; }
+.drop-b { top: 20%; right: 8%; animation-delay: 1s;   font-size: 2rem; }
+.drop-c { top: 60%; left: 3%;  animation-delay: 2s;   font-size: 5rem; }
+.drop-d { top: 75%; right: 5%; animation-delay: 1.5s; font-size: 3rem; }
+.drop-e { top: 40%; left: 45%; animation-delay: 3s;   font-size: 2rem; }
+
+/* Header */
+.welcome-header {
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.welcome-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.welcome-logo {
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.welcome-title {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+/* Cards */
+.welcome-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1100px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease 0.2s;
+}
+
+/* Each card */
+.welcome-card {
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 420px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.welcome-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 60px rgba(192, 57, 43, 0.4);
+}
+
+/* Card image wrapper */
+.welcome-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Card image */
+.welcome-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.welcome-card:hover .welcome-card-image {
+  transform: scale(1.08);
+}
+
+/* Dark overlay on image */
+.welcome-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(13, 10, 10, 0.95) 0%,
+    rgba(120, 20, 20, 0.6)  50%,
+    rgba(13, 10, 10, 0.2)  100%
+  );
+  transition: background 0.4s ease;
+}
+
+.welcome-card:hover .welcome-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(13, 10, 10, 0.98) 0%,
+    rgba(192, 57, 43, 0.7)  50%,
+    rgba(13, 10, 10, 0.3)  100%
+  );
+}
+
+/* Card content */
+.welcome-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+
+.welcome-card:hover .welcome-card-content {
+  transform: translateY(0);
+}
+
+.welcome-card-icon {
+  font-size: 2rem;
+}
+
+.welcome-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-text);
+}
+
+.welcome-card-text {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+/* Card button */
+.welcome-card-btn {
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 15px rgba(192, 57, 43, 0.5);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.welcome-card:hover .welcome-card-btn {
+  opacity: 1;
+  transform: translateY(0);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Bottom action buttons */
+.welcome-actions {
+  display: flex;
+  gap: 1rem;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease 0.4s;
+}
+
+.welcome-action-btn {
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  transition: all 0.3s ease;
+}
+
+.welcome-action-btn:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-2px);
+}
+
+.welcome-action-secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-red-dim);
+  color: var(--color-text);
+  box-shadow: none;
+}
+
+.welcome-action-secondary:hover {
+  border-color: var(--color-red-bright);
+  background-color: transparent;
+  color: var(--color-red-bright);
+}
+
+/* Animations */
+@keyframes floatDrop {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(-20px) rotate(10deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .welcome-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-card {
+    height: 300px;
+  }
+
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .welcome-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .welcome-action-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
