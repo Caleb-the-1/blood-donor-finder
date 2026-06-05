@@ -38,33 +38,34 @@ function SetupProfile({ name, userId, email }: SetupProfileProps) {
   }
 
   async function handleFinish() {
-    try {
-      setSaving(true)
+  try {
+    setSaving(true)
 
-      // Upload picture if chosen
-      let pictureId = ''
-      if (profileFile) {
-        pictureId = await uploadProfilePicture(profileFile)
-      }
-
-      // Save profile to database
-      await saveUserProfile({
-        userId,
-        name,
-        email,
-        gender:     gender || 'Prefer not to say',
-        profilePic: pictureId,
-      })
-
-      navigate('/welcome')
-
-    } catch (error: any) {
-      console.error('Profile save error:', error)
-      alert('Error: ' + error.message)
-    } finally {
-      setSaving(false)
+    let pictureId = ''
+    if (profileFile) {
+      pictureId = await uploadProfilePicture(profileFile)
     }
+
+    await saveUserProfile({
+      userId,
+      name,
+      email,
+      gender:     gender || 'Prefer not to say',
+      profilePic: pictureId,
+      bloodType:  '',
+      location:   '',
+    })
+
+    console.log('Profile saved!')
+    navigate('/welcome')
+
+  } catch (error: any) {
+    console.error('Error saving profile:', error.message)
+    navigate('/welcome')
+  } finally {
+    setSaving(false)
   }
+}
 
   return (
     <div className="setup-page">

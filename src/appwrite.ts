@@ -43,15 +43,22 @@ export async function saveUserProfile(data: {
   userId: string
   name: string
   email: string
-  gender: string
-  profilePic: string
+  gender?: string
+  profilePic?: string
+  bloodType?: string
+  location?: string
 }) {
-  return await databases.createDocument(
-    DATABASE_ID,
-    USERS_TABLE,
-    ID.unique(),
-    data
-  )
+  try {
+    return await databases.createDocument(
+      DATABASE_ID,
+      USERS_TABLE,
+      ID.unique(),
+      data
+    )
+  } catch (error: any) {
+    console.error('saveUserProfile error:', error.message)
+    throw error
+  }
 }
 
 export async function getUserProfile(userId: string) {
