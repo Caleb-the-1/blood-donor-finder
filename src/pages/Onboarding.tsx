@@ -54,7 +54,7 @@ function Onboarding() {
 
   const navigate              = useNavigate()
   const [current, setCurrent] = useState(0)
-  const [animating, setAnimating] = useState(false)
+  const [, setAnimating] = useState(false)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
