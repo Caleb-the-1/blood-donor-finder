@@ -1,0 +1,298 @@
+/* Onboarding Page */
+.onboard-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background */
+.onboard-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.onboard-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.8s ease, transform 6s ease;
+}
+
+.onboard-bg-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Dark gradient overlay */
+.onboard-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(13, 10, 10, 0.98) 0%,
+    rgba(13, 10, 10, 0.7)  40%,
+    rgba(13, 10, 10, 0.3)  100%
+  );
+}
+
+/* Skip button */
+.onboard-skip {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.onboard-skip:hover {
+  background: rgba(192, 57, 43, 0.4);
+  border-color: var(--color-red-bright);
+}
+
+/* Content */
+.onboard-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.onboard-content-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tag */
+.onboard-tag {
+  display: inline-block;
+  background-color: var(--color-red-dim);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+}
+
+/* Heading */
+.onboard-heading {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+}
+
+.onboard-heading-red {
+  color: var(--color-red-bright);
+}
+
+/* Text */
+.onboard-text {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* Stats */
+.onboard-stats {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.onboard-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.onboard-stat-number {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-red-bright);
+  font-weight: 700;
+}
+
+.onboard-stat-label {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 140px;
+  line-height: 1.4;
+}
+
+/* Features list on final slide */
+.onboard-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.onboard-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.onboard-feature span {
+  font-size: 1.2rem;
+}
+
+/* Bottom controls */
+.onboard-bottom {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Dots */
+.onboard-dots {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.onboard-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.onboard-dot-active {
+  background-color: var(--color-red-bright);
+  width: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(192, 57, 43, 0.6);
+}
+
+/* Navigation */
+.onboard-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.onboard-prev {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.onboard-prev:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.onboard-next {
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.5);
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.onboard-next:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-2px);
+  animation: none;
+}
+
+/* Final Get Started button */
+.onboard-get-started {
+  background: linear-gradient(135deg, var(--color-red), var(--color-red-bright));
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 6px 30px rgba(192, 57, 43, 0.6);
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+  letter-spacing: 0.5px;
+}
+
+.onboard-get-started:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(192, 57, 43, 0.7);
+  animation: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .onboard-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .onboard-heading {
+    font-size: 2.4rem;
+  }
+
+  .onboard-stats {
+    gap: 2rem;
+  }
+
+  .onboard-bottom {
+    padding: 1.5rem 1.5rem 2.5rem;
+  }
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 10px rgba(192, 57, 43, 0.4); }
+  50%  { box-shadow: 0 0 30px rgba(192, 57, 43, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(192, 57, 43, 0.4); }
+}
