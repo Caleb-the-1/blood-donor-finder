@@ -1,24 +1,41 @@
 /* Wrapper */
 .notif-wrapper {
   position: fixed;
-  top: 0.8rem;
-  right: 8rem;
+  bottom: 5rem;
+  right: 1.5rem;
   z-index: 1000;
 }
 
 /* Bell button */
 .notif-bell {
-  background: transparent;
-  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   font-size: 1.4rem;
   cursor: pointer;
   position: relative;
-  padding: 0.3rem;
-  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Glass effect */
+  background: rgba(192, 57, 43, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 8px 32px rgba(192, 57, 43, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+  transition: all 0.3s ease;
 }
 
 .notif-bell:hover {
-  transform: rotate(20deg) scale(1.1);
+  transform: scale(1.1);
+  background: rgba(192, 57, 43, 0.4);
+  box-shadow:
+    0 8px 32px rgba(192, 57, 43, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Unread badge */
@@ -39,10 +56,9 @@
   animation: badgePulse 2s ease-in-out infinite;
 }
 
-/* Dropdown panel */
 .notif-panel {
   position: absolute;
-  top: 2.5rem;
+  bottom: 4rem;
   right: 0;
   width: 340px;
   background: var(--color-surface);
