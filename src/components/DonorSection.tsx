@@ -80,17 +80,18 @@ function DonorSection() {
       </div>
 
       <div className="donor-grid">
-        {donors.map((donor) => (
-          <DonorCard
-            key={donor.$id}
-            name={donor.name}
-            bloodType={donor.bloodType}
-            location={donor.location}
-            distance="Nearby"
-            available={donor.available}
-            image=""
-          />
-        ))}
+     {donors.map((donor) => (
+  <DonorCard
+    key={donor.$id}
+    name={donor.name}
+    bloodType={donor.bloodType}
+    location={donor.location}
+    distance="Nearby"
+    available={donor.available}
+    image=""
+    phone={donor.phone}
+  />
+))}
       </div>
 
     </section>

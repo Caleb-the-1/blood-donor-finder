@@ -9,7 +9,7 @@ function Footer() {
           <span className="footer-logo">🩸 BloodLink</span>
           <p className="footer-description">
             Connecting people in urgent need of blood
-            to willing donors nearby. Fast. Free. Life-saving.
+            to willing donors nearby. Fast. Free. Life saving.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ function Footer() {
       {/* BOTTOM — Copyright */}
       <div className="footer-bottom">
         <p className="footer-copy">
-          © 2025 BloodLink. Built by group 2 with ❤️ to save lives across Nigeria.
+          © 2026 BloodLink. Built by group 2 with ❤️ to save lives across Nigeria.
         </p>
       </div>
 

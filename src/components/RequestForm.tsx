@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createRequest } from '../appwrite'
 import SuccessOverlay from './SuccessOverlay'
 import './SuccessOverlay.css'
+import { useNavigate } from 'react-router-dom'
 
 function RequestForm() {
 
@@ -13,6 +14,7 @@ function RequestForm() {
     phone: '',
     urgency: '',
   })
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [showOverlay, setShowOverlay] = useState(false)
 
@@ -40,8 +42,11 @@ function RequestForm() {
         urgency:     formData.urgency,
         status:      'pending',
       })
-      setShowOverlay(true)
-      setFormData({ patientName: '', bloodType: '', hospital: '', location: '', phone: '', urgency: '' })
+    setShowOverlay(true)
+setFormData({ patientName: '', bloodType: '', hospital: '', location: '', phone: '', urgency: '' })
+setTimeout(() => {
+  navigate('/')
+}, 3000)
     } catch (error) {
       alert('Something went wrong! Please try again.')
       console.error(error)

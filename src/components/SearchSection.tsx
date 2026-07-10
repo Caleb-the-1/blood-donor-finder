@@ -132,17 +132,18 @@ function SearchSection() {
           )}
 
           <div className="search-results-grid">
-            {results.map((donor) => (
-              <DonorCard
-                key={donor.$id}
-                name={donor.name}
-                bloodType={donor.bloodType}
-                location={donor.location}
-                distance="Nearby"
-                available={donor.available}
-                image=""
-              />
-            ))}
+{results.map((donor) => (
+  <DonorCard
+    key={donor.$id}
+    name={donor.name}
+    bloodType={donor.bloodType}
+    location={donor.location}
+    distance="Nearby"
+    available={donor.available}
+    image=""
+    phone={donor.phone}
+  />
+))}
           </div>
 
         </div>

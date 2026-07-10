@@ -7,12 +7,12 @@ interface SuccessOverlayProps {
 function SuccessOverlay({ onClose }: SuccessOverlayProps) {
 
   // Auto close after 4 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose()
-    }, 4000)
-    return () => clearTimeout(timer)
-  }, [])
+useEffect(() => {
+  const timer = setTimeout(() => {
+    onClose()
+  }, 3000)
+  return () => clearTimeout(timer)
+}, [])
 
   return (
     <div className="overlay-wrapper">

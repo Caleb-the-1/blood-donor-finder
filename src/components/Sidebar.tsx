@@ -163,6 +163,10 @@ function Sidebar() {
             <span className="sidebar-link-icon">👤</span>
             My Profile
           </Link>
+          <Link to="/meeting-point" className="sidebar-link" onClick={closeSidebar}>
+  <span className="sidebar-link-icon">🏥</span>
+  Find Meeting Point
+</Link>
 
         </nav>
 

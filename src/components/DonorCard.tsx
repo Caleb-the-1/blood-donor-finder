@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 interface DonorProps {
   name: string
   bloodType: string
@@ -5,11 +7,13 @@ interface DonorProps {
   distance: string
   available: boolean
   image: string
+  phone?: string
 }
 
-function DonorCard({ name, bloodType, location, distance, available }: DonorProps) {
+function DonorCard({ name, bloodType, location, distance, available, phone }: DonorProps) {
 
-  // Get first two letters of name for avatar
+  const navigate = useNavigate()
+
   const initials = name
     .split(' ')
     .map((n) => n[0])
@@ -17,10 +21,28 @@ function DonorCard({ name, bloodType, location, distance, available }: DonorProp
     .toUpperCase()
     .slice(0, 2)
 
+  function handleCall() {
+    if (phone) {
+      window.location.href = `tel:${phone}`
+    } else {
+      alert('Phone number not available for this donor.')
+    }
+  }
+
+  function handleMessage() {
+    if (phone) {
+      const message = encodeURIComponent(
+        `Hello! I found you on BloodLink. I urgently need ${bloodType} blood. Can you help me? 🩸`
+      )
+      window.open(`https://wa.me/${phone}?text=${message}`, '_blank')
+    } else {
+      alert('Phone number not available for this donor.')
+    }
+  }
+
   return (
     <div className="donor-card">
 
-      {/* TOP */}
       <div className="donor-card-top">
         <div className="donor-avatar-initials">
           {initials}
@@ -30,19 +52,31 @@ function DonorCard({ name, bloodType, location, distance, available }: DonorProp
         </span>
       </div>
 
-      {/* MIDDLE */}
       <div className="donor-card-info">
         <h3 className="donor-name">{name}</h3>
         <span className="donor-blood-type">{bloodType}</span>
         <p className="donor-location">📍 {location}</p>
         <p className="donor-distance">🚗 {distance}</p>
+        {phone && (
+          <p className="donor-phone">📞 {phone}</p>
+        )}
       </div>
 
-      {/* BOTTOM */}
       <div className="donor-card-actions">
-        <button className="donor-btn-call">📞 Call</button>
-        <button className="donor-btn-message">💬 Message</button>
+        <button className="donor-btn-call" onClick={handleCall}>
+          📞 Call
+        </button>
+        <button className="donor-btn-message" onClick={handleMessage}>
+          💬 WhatsApp
+        </button>
       </div>
+
+      <button
+        className="donor-btn-meeting"
+        onClick={() => navigate('/meeting-point')}
+      >
+        🏥 Find Meeting Point
+      </button>
 
     </div>
   )

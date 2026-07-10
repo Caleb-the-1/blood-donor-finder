@@ -1,0 +1,220 @@
+/* Meeting Wrapper */
+.meeting-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header */
+.meeting-header {
+  text-align: center;
+}
+
+.meeting-tag {
+  display: inline-block;
+  background-color: var(--color-red-dim);
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.meeting-title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+}
+
+.meeting-title-red {
+  color: var(--color-red-bright);
+}
+
+.meeting-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* Hospital cards */
+.meeting-hospitals {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.meeting-hospital-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 14px;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.meeting-hospital-card:hover {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 8px 24px rgba(192, 57, 43, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Recommended badge */
+.meeting-hospital-recommended {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 0 20px rgba(192, 57, 43, 0.2);
+}
+
+.meeting-recommended-badge {
+  position: absolute;
+  top: -12px;
+  left: 1rem;
+  background-color: var(--color-red);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+}
+
+/* Hospital info */
+.meeting-hospital-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.meeting-hospital-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.meeting-hospital-detail {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Select button */
+.meeting-select-btn {
+  width: 100%;
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.meeting-select-btn:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-2px);
+}
+
+/* Confirmed state */
+.meeting-confirmed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.15);
+  max-width: 500px;
+  margin: 0 auto;
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.meeting-confirmed-icon {
+  font-size: 3.5rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+.meeting-confirmed-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-text);
+}
+
+.meeting-confirmed-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.meeting-confirmed-text {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* Action buttons */
+.meeting-whatsapp-btn {
+  width: 100%;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.meeting-whatsapp-btn:hover {
+  background-color: #128C7E;
+  transform: translateY(-2px);
+}
+
+.meeting-directions-btn {
+  width: 100%;
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.meeting-directions-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}

@@ -25,35 +25,35 @@ const [isLogin, setIsLogin]       = useState(!registerType)
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  async function handleSubmit() {
-    if (!formData.email || !formData.password) {
-      alert('Please fill in all fields!')
-      return
-    }
-    if (!isLogin && !formData.name) {
-      alert('Please enter your name!')
-      return
-    }
-
-    try {
-      setLoading(true)
-
-      if (isLogin) {
-        await signIn(formData.email, formData.password)
-        navigate('/welcome')
-      } else {
-        const user = await signUp(formData.name, formData.email, formData.password)
-        setUserId(user.$id)
-        setShowSetup(true)
-      }
-
-    } catch (error: any) {
-      alert(error.message || 'Something went wrong! Please try again.')
-      console.error(error)
-    } finally {
-      setLoading(false)
-    }
+async function handleSubmit() {
+  if (!formData.email || !formData.password) {
+    alert('Please enter your email and password!')
+    return
   }
+  if (!isLogin && !formData.name) {
+    alert('Please enter your full name!')
+    return
+  }
+
+  try {
+    setLoading(true)
+
+if (isLogin) {
+  await signIn(formData.email, formData.password)
+ navigate('/')
+} else {
+  const user = await signUp(formData.name, formData.email, formData.password)
+  setUserId(user.$id)
+  setShowSetup(true)
+}
+
+  } catch (error: any) {
+    alert(error.message || 'Something went wrong! Please try again.')
+    console.error(error)
+  } finally {
+    setLoading(false)
+  }
+}
 
   if (showSetup) {
     return <SetupProfile name={formData.name} userId={userId} email={formData.email} />

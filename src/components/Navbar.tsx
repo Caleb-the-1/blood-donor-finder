@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Navbar() {
 
   const [lastScroll, setLastScroll] = useState(0)
-  const [hidden, setHidden] = useState(false)
+  const [hidden, setHidden]         = useState(false)
 
   useEffect(() => {
     function handleScroll() {
@@ -34,24 +34,20 @@ function Navbar() {
       {/* BOTTOM — Navigation */}
       <nav className={`bottom-nav ${hidden ? 'bottom-nav-hidden' : ''}`}>
 
-        <Link to="/" className="bottom-nav-link">
-          <span className="bottom-nav-icon">🏠</span>
-          <span className="bottom-nav-label">Home</span>
-        </Link>
-
         <Link to="/find" className="bottom-nav-link">
           <span className="bottom-nav-icon">🔍</span>
           <span className="bottom-nav-label">Find Donor</span>
         </Link>
 
+        {/* Emergency button in the middle */}
         <Link to="/sos" className="bottom-nav-emergency">
           <span className="bottom-nav-icon">🚨</span>
-          <span className="bottom-nav-label">Request</span>
+          <span className="bottom-nav-label">Emergency</span>
         </Link>
 
-        <Link to="/register" className="bottom-nav-link">
-          <span className="bottom-nav-icon">💉</span>
-          <span className="bottom-nav-label">Be a Donor</span>
+        <Link to="/request" className="bottom-nav-link">
+          <span className="bottom-nav-icon">🩸</span>
+          <span className="bottom-nav-label">Request</span>
         </Link>
 
         <Link to="/profile" className="bottom-nav-link">

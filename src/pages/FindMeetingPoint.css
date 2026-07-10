@@ -1,0 +1,726 @@
+/* ─── Page ─── */
+.mp-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 1.5rem 4rem;
+  background-color: var(--color-bg);
+  position: relative;
+  gap: 2rem;
+}
+
+/* Back button */
+.mp-back-btn {
+  position: fixed;
+  top: 5rem;
+  left: 1.5rem;
+  background: rgba(192, 57, 43, 0.1);
+  border: 1px solid var(--color-red-dim);
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.mp-back-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+/* ─── Progress Bar ─── */
+.mp-progress {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+.mp-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  position: relative;
+}
+
+.mp-progress-step::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-red-dim);
+  z-index: 0;
+}
+
+.mp-progress-step:last-child::after {
+  display: none;
+}
+
+.mp-progress-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-red-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.mp-step-active .mp-progress-dot {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: white;
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+}
+
+.mp-step-done .mp-progress-dot {
+  background-color: #2ecc71;
+  border-color: #2ecc71;
+  color: white;
+}
+
+.mp-progress-label {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mp-step-active .mp-progress-label {
+  color: var(--color-red-bright);
+  font-weight: 700;
+}
+
+/* ─── Section ─── */
+.mp-section {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeUp 0.5s ease forwards;
+}
+
+/* ─── Header ─── */
+.mp-header {
+  text-align: center;
+}
+
+.mp-tag {
+  display: inline-block;
+  background-color: var(--color-red-dim);
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.mp-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.mp-title-red {
+  color: var(--color-red-bright);
+}
+
+.mp-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* ─── Form Card ─── */
+.mp-form-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.1);
+}
+
+.mp-form-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-red-bright);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mp-divider {
+  height: 1px;
+  background-color: var(--color-red-dim);
+  margin: 0.5rem 0;
+}
+
+.mp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mp-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.mp-input {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.mp-input:focus {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+}
+
+.mp-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Blood type grid */
+.mp-blood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+.mp-blood-btn {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mp-blood-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+.mp-blood-active {
+  background-color: var(--color-red);
+  border-color: var(--color-red);
+  color: white;
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.4);
+}
+
+/* Find button */
+.mp-find-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--color-red), var(--color-red-bright));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.mp-find-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(192, 57, 43, 0.6);
+}
+
+/* ─── Hospital Cards ─── */
+.mp-hospitals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mp-hospital-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 14px;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  animation: fadeUp 0.4s ease forwards;
+}
+
+.mp-hospital-card:hover {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 8px 24px rgba(192, 57, 43, 0.2);
+  transform: translateY(-2px);
+}
+
+.mp-hospital-top {
+  border-color: var(--color-red-bright);
+  box-shadow: 0 0 20px rgba(192, 57, 43, 0.2);
+}
+
+.mp-best-badge {
+  position: absolute;
+  top: -12px;
+  left: 1rem;
+  background: linear-gradient(135deg, var(--color-red), var(--color-red-bright));
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.8rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.4);
+}
+
+.mp-hospital-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.mp-hospital-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 0.3rem;
+}
+
+.mp-hospital-location {
+  font-size: 0.83rem;
+  color: var(--color-text-muted);
+}
+
+.mp-hospital-distance {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-red-bright);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.mp-hospital-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.mp-hospital-detail {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+.mp-detail-green { color: #2ecc71 !important; }
+.mp-detail-red   { color: var(--color-red-bright) !important; }
+
+.mp-hospital-distances {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.mp-hospital-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.mp-select-btn {
+  flex: 2;
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mp-select-btn:hover {
+  background-color: var(--color-red-bright);
+  transform: translateY(-1px);
+}
+
+.mp-directions-btn {
+  flex: 1;
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mp-directions-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+/* ─── Confirmed Card ─── */
+.mp-confirmed-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-red-bright);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.2);
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.mp-confirmed-icon {
+  font-size: 3.5rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+.mp-confirmed-hospital {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-text);
+}
+
+.mp-confirmed-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  text-align: left;
+}
+
+.mp-whatsapp-btn {
+  width: 100%;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mp-whatsapp-btn:hover {
+  background-color: #128C7E;
+  transform: translateY(-2px);
+}
+
+.mp-directions-btn-full {
+  width: 100%;
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 10px;
+  padding: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mp-directions-btn-full:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+.mp-confirm-prompt {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.mp-done-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(46, 204, 113, 0.4);
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.mp-done-btn:hover {
+  transform: translateY(-2px);
+  animation: none;
+}
+
+/* ─── Confirm button ─── */
+.mp-confirm-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--color-red), var(--color-red-bright));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  transition: all 0.3s ease;
+}
+
+.mp-confirm-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ─── Receipt ─── */
+.mp-receipt {
+  background: linear-gradient(145deg, #1a0a0a, #2a1010);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  box-shadow: 0 0 60px rgba(192, 57, 43, 0.2);
+}
+
+.mp-receipt-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.mp-receipt-logo {
+  font-size: 2.5rem;
+}
+
+.mp-receipt-brand {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-red-bright);
+}
+
+.mp-receipt-tagline {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.mp-receipt-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-red-dim), transparent);
+  margin: 1rem 0;
+}
+
+.mp-receipt-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.mp-receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mp-receipt-label {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mp-receipt-value {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: right;
+  max-width: 60%;
+}
+
+.mp-receipt-blood {
+  background-color: var(--color-red);
+  color: white;
+  padding: 0.2rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.mp-receipt-footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mp-receipt-stamp {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 1.5rem;
+  border-radius: 20px;
+  letter-spacing: 2px;
+}
+
+.mp-receipt-thanks {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.mp-receipt-powered {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ─── Receipt Actions ─── */
+.mp-receipt-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.mp-download-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--color-red), var(--color-red-bright));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+  transition: all 0.3s ease;
+}
+
+.mp-download-btn:hover {
+  transform: translateY(-2px);
+}
+
+.mp-share-receipt-btn {
+  width: 100%;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mp-share-receipt-btn:hover {
+  background-color: #128C7E;
+  transform: translateY(-2px);
+}
+
+.mp-home-btn {
+  width: 100%;
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-red-dim);
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mp-home-btn:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+}
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 10px rgba(46, 204, 113, 0.4); }
+  50%  { box-shadow: 0 0 25px rgba(46, 204, 113, 0.7); }
+  100% { box-shadow: 0 0 10px rgba(46, 204, 113, 0.4); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .mp-title { font-size: 1.8rem; }
+  .mp-progress-label { display: none; }
+  .mp-hospital-actions { flex-direction: column; }
+}

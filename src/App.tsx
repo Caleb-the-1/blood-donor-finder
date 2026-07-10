@@ -40,6 +40,7 @@ import './pages/Auth.css'
 import './pages/Welcome.css'
 import './pages/EditProfile.css'
 import './pages/Onboarding.css'
+import FindMeetingPoint from './pages/FindMeetingPoint'
 
 // Pages where we HIDE the navigation
 const HIDE_NAV_ROUTES = ['/auth', '/onboarding']
@@ -61,34 +62,35 @@ function AppContent({ user }: { user: any }) {
 
       <Routes>
 
-        <Route
-          path="/"
-          element={
-            user
-              ? <Home />
-              : localStorage.getItem('onboardingDone')
-              ? <Navigate to="/auth" replace />
-              : <Navigate to="/onboarding" replace />
-          }
-        />
+    <Route
+  path="/"
+  element={
+    user
+      ? <Home />
+      : sessionStorage.getItem('onboardingDone')
+      ? <Navigate to="/auth" replace />
+      : <Navigate to="/onboarding" replace />
+  }
+/>
 
-        <Route
-          path="/onboarding"
-          element={
-            user
-              ? <Navigate to="/" replace />
-              : <Onboarding />
-          }
-        />
+<Route
+  path="/onboarding"
+  element={
+    user
+      ? <Navigate to="/" replace />
+      : <Onboarding />
+  }
+/>
 
-        <Route
-          path="/auth"
-          element={
-            user
-              ? <Navigate to="/" replace />
-              : <Auth />
-          }
-        />
+<Route
+  path="/auth"
+  element={
+    user
+      ? <Navigate to="/" replace />
+      : <Auth />
+  }
+/>
+        
 
         <Route path="/welcome"       element={<Welcome />} />
         <Route path="/find"          element={<FindDonor />} />
@@ -101,7 +103,7 @@ function AppContent({ user }: { user: any }) {
         <Route path="/map"           element={<MapPage />} />
         <Route path="/hospitals"     element={<Hospitals />} />
         <Route path="/edit-profile"  element={<EditProfile />} />
-
+        <Route path="/meeting-point" element={<FindMeetingPoint />} />
       </Routes>
 
       {/* Only show footer after login */}

@@ -64,6 +64,12 @@ function Profile() {
           >
             🔐 Sign In / Sign Up
           </button>
+          <button
+  className="profile-donor-btn"
+  onClick={() => navigate('/register')}
+>
+  💉 Become a Donor
+</button>
         </div>
       </div>
     )
@@ -127,6 +133,12 @@ function Profile() {
   onClick={() => navigate('/edit-profile')}
 >
   ✏️ Edit Profile
+</button>
+<button
+  className="profile-donor-btn"
+  onClick={() => navigate('/register')}
+>
+  💉 Become a Donor
 </button>
 
         {/* Sign out button */}

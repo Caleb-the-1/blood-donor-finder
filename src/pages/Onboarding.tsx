@@ -83,16 +83,15 @@ function Onboarding() {
     }
   }
 
-  function handleGetStarted() {
-    // Mark onboarding as seen
-    localStorage.setItem('onboardingDone', 'true')
-    navigate('/auth')
-  }
+function handleGetStarted() {
+  sessionStorage.setItem('onboardingDone', 'true')
+  navigate('/auth')
+}
 
-  function handleSkip() {
-    localStorage.setItem('onboardingDone', 'true')
-    navigate('/auth')
-  }
+function handleSkip() {
+  sessionStorage.setItem('onboardingDone', 'true')
+  navigate('/auth')
+}
 
   const slide = slides[current]
 

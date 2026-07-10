@@ -144,3 +144,28 @@
   }
 
 }
+.donor-phone {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.3rem;
+}
+.donor-btn-meeting {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid var(--color-red-dim);
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.donor-btn-meeting:hover {
+  border-color: var(--color-red-bright);
+  color: var(--color-red-bright);
+  background-color: rgba(192, 57, 43, 0.05);
+}

@@ -32,6 +32,47 @@
   letter-spacing: 2px;
 }
 
+/* Top Bar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-red-dim);
+  z-index: 999;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.top-bar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar-icon {
+  font-size: 1.8rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-text);
+  letter-spacing: 2px;
+}
+
+.navbar-logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 /* Bottom Nav */
 .bottom-nav {
   position: fixed;
@@ -41,11 +82,15 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem 1rem 1rem;
   background-color: var(--color-surface);
   border-top: 1px solid var(--color-red-dim);
   z-index: 999;
   transition: transform 0.4s ease, opacity 0.4s ease;
+
+  /* Glass effect */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .bottom-nav-hidden {
@@ -57,7 +102,7 @@
   display: none;
 }
 
-/* Nav Links */
+/* Each nav link */
 .bottom-nav-link {
   text-decoration: none;
   display: flex;
@@ -66,6 +111,7 @@
   gap: 0.2rem;
   color: var(--color-text-muted);
   transition: color 0.3s ease;
+  flex: 1;
 }
 
 .bottom-nav-link:hover {
@@ -82,7 +128,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Emergency Button */
+/* Emergency Button — center pill style */
 .bottom-nav-emergency {
   text-decoration: none;
   display: flex;
@@ -90,19 +136,69 @@
   align-items: center;
   justify-content: center;
   gap: 0.2rem;
-  background-color: var(--color-red);
-  color: var(--color-text);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-top: -2rem;
-  box-shadow: 0 0 20px rgba(192, 57, 43, 0.6);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 1.5;
+
+  background: linear-gradient(135deg, var(--color-red), var(--color-red-bright));
+  color: white;
+
+  /* Pill shape */
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  margin: 0 0.5rem;
+  margin-bottom: 0.3rem;
+
+  /* Glowing red shadow */
+  box-shadow:
+    0 4px 20px rgba(192, 57, 43, 0.6),
+    0 0 0 2px rgba(192, 57, 43, 0.2);
+
+  transition: all 0.3s ease;
+  animation: emergencyPulse 2s ease-in-out infinite;
 }
 
 .bottom-nav-emergency:hover {
-  background-color: var(--color-red-bright);
-  transform: scale(1.1);
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 30px rgba(192, 57, 43, 0.8),
+    0 0 0 3px rgba(192, 57, 43, 0.3);
+  animation: none;
+}
+
+.bottom-nav-emergency .bottom-nav-icon {
+  font-size: 1.2rem;
+}
+
+.bottom-nav-emergency .bottom-nav-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+}
+
+/* Float animation */
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Emergency pulse */
+@keyframes emergencyPulse {
+  0%   { box-shadow: 0 4px 20px rgba(192, 57, 43, 0.6), 0 0 0 2px rgba(192, 57, 43, 0.2); }
+  50%  { box-shadow: 0 4px 30px rgba(192, 57, 43, 0.9), 0 0 0 4px rgba(192, 57, 43, 0.3); }
+  100% { box-shadow: 0 4px 20px rgba(192, 57, 43, 0.6), 0 0 0 2px rgba(192, 57, 43, 0.2); }
 }
 
 /* Float animation */

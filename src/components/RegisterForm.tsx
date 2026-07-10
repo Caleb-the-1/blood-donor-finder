@@ -1,8 +1,8 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { registerDonor } from '../appwrite'
 import SuccessOverlay from './SuccessOverlay'
 import './SuccessOverlay.css'
-
 
 function RegisterForm() {
 
@@ -14,6 +14,8 @@ function RegisterForm() {
     location: '',
     registerType: '',
   })
+
+const navigate = useNavigate()
 
 const [loading, setLoading] = useState(false)
 const [showOverlay, setShowOverlay] = useState(false)
@@ -45,6 +47,9 @@ const [showOverlay, setShowOverlay] = useState(false)
 
      setShowOverlay(true)
 setFormData({ name: '', email: '', phone: '', bloodType: '', location: '', registerType: '' })
+setTimeout(() => {
+  navigate('/')
+}, 3000)
 
     } catch (error) {
       alert('Something went wrong! Please try again.')
