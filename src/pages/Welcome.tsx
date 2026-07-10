@@ -7,7 +7,7 @@ function Welcome() {
   const navigate              = useNavigate()
   const [user, setUser]       = useState<any>(null)
   const [visible, setVisible] = useState(false)
-  const [choice, setChoice]   = useState('')
+ 
 
   useEffect(() => {
     async function fetchUser() {
