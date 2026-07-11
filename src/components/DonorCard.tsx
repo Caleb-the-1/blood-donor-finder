@@ -29,16 +29,21 @@ function DonorCard({ name, bloodType, location, distance, available, phone }: Do
     }
   }
 
-  function handleMessage() {
-    if (phone) {
-      const message = encodeURIComponent(
-        `Hello! I found you on BloodLink. I urgently need ${bloodType} blood. Can you help me? 🩸`
-      )
-      window.open(`https://wa.me/${phone}?text=${message}`, '_blank')
-    } else {
-      alert('Phone number not available for this donor.')
-    }
+function handleMessage() {
+  if (phone) {
+    // Convert Nigerian number to international format
+    const formatted = phone.startsWith('0')
+      ? '234' + phone.slice(1)
+      : phone
+
+    const message = encodeURIComponent(
+      `Hello! I found you on BloodLink. I urgently need ${bloodType} blood. Can you help me? 🩸`
+    )
+    window.open(`https://wa.me/${formatted}?text=${message}`, '_blank')
+  } else {
+    alert('Phone number not available for this donor.')
   }
+}
 
   return (
     <div className="donor-card">

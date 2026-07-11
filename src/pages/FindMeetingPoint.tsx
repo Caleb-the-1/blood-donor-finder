@@ -161,22 +161,25 @@ function FindMeetingPoint() {
     setStep(3)
   }
 
-  function handleShareWhatsApp() {
-    const message = encodeURIComponent(
-      `🩸 *BloodLink Meeting Point*\n\n` +
-      `Hi ${formData.donorName}! Thank you for agreeing to donate *${formData.bloodType}* blood for ${formData.recipientName}.\n\n` +
-      `📍 *Please meet at:*\n` +
-      `🏥 ${selectedHospital.name}\n` +
-      `📍 Location: ${selectedHospital.location}\n` +
-      `📞 Hospital: ${selectedHospital.phone}\n` +
-      `⏰ Hours: ${selectedHospital.hours}\n\n` +
-      `🗺️ Directions: https://www.google.com/maps/search/${encodeURIComponent(selectedHospital.name)}\n\n` +
-      `Please confirm you can make it! 🙏\n\n` +
-      `— Sent via BloodLink 🩸`
-    )
-    window.open(`https://wa.me/${formData.donorPhone}?text=${message}`, '_blank')
-  }
+function handleShareWhatsApp() {
+  const formatted = formData.donorPhone.startsWith('0')
+    ? '234' + formData.donorPhone.slice(1)
+    : formData.donorPhone
 
+  const message = encodeURIComponent(
+    `🩸 *BloodLink Meeting Point*\n\n` +
+    `Hi ${formData.donorName}! Thank you for agreeing to donate *${formData.bloodType}* blood for ${formData.recipientName}.\n\n` +
+    `📍 *Please meet at:*\n` +
+    `🏥 ${selectedHospital.name}\n` +
+    `📍 Location: ${selectedHospital.location}\n` +
+    `📞 Hospital: ${selectedHospital.phone}\n` +
+    `⏰ Hours: ${selectedHospital.hours}\n\n` +
+    `🗺️ Directions: https://www.google.com/maps/search/${encodeURIComponent(selectedHospital.name)}\n\n` +
+    `Please confirm you can make it! 🙏\n\n` +
+    `— Sent via BloodLink 🩸`
+  )
+  window.open(`https://wa.me/${formatted}?text=${message}`, '_blank')
+}
   function handleConfirmDonation() {
     if (!confirmation.units) {
       alert('Please enter the number of units donated!')
